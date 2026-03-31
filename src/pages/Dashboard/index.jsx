@@ -142,9 +142,18 @@ export default function ExecutiveDashboard() {
             </CardHeader>
             <CardContent className="h-[250px] pb-4">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={departmentPerformance} layout="vertical" margin={{ top: 0, right: 30, left: 100, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#e5e7eb" className="dark:stroke-zinc-800" />
-                  <XAxis type="number" hide />
+                <BarChart data={departmentPerformance} layout="vertical" margin={{ top: 20, right: 20, left: 100, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={true} stroke="#e5e7eb" className="dark:stroke-zinc-800" />
+                  <XAxis 
+                    type="number" 
+                    orientation="top"
+                    domain={[0, 125]}
+                    ticks={[0, 25, 50, 75, 100, 125]} 
+                    tickFormatter={(val) => `${val}%`}
+                    axisLine={false} 
+                    tickLine={false} 
+                    tick={{fill: '#6b7280', fontSize: 12}} 
+                  />
                   <YAxis dataKey="department" type="category" axisLine={false} tickLine={false} tick={{fill: '#4b5563', fontWeight: 500}} />
                   <Tooltip 
                     formatter={(val) => `${val}%`} 
